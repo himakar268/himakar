@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DMART ONLINE BILLING PORTAL</title>
+		<style>
+		body {
+				background-image: url("https://w7.pngwing.com/pngs/317/111/png-transparent-d-mart-ambegaon-d-mart-retail-grocery-store-d-mart-supermarket-others.png"), url("https://i.pinimg.com/originals/e1/86/eb/e186eb6deeae0c65db343938923d8f79.jpg");
+				background-size: 300px 100px, cover;
+				background-repeat: no-repeat,repeat;
+				background-position: top center, center;
+				color: white;
+				margin-top: 200px; /* Add margin-top to prevent other elements from touching the background image */
+			}
+			button {
+				background-color: #002B5B;
+				color: white;
+				padding: 10px;
+				border: none;
+				cursor: pointer;
+			}
+			input {
+				padding: 5px;
+				margin-bottom: 10px;
+			}
+			#result {
+				margin-top: 20px;
+			}
+			#clearButton {
+				float: left;
+			}
+			#calculateButton {
+				float: right;
+			}
+			#buttonsContainer {
+				overflow: auto;
+			}
+			#billContainer {
+				margin: 20px auto;
+				max-width: 500px;
+			}
+			#billContainer label {
+				display: block;
+			}
+			#billContainer input {
+				display: inline-block;
+				margin-right: 10px;
+			}
+			h1{
+				position:1px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1><strong>WELCOME TO DMART!!</strong></h1> <!-- Change h2 to h1 -->
+		<div id="billContainer">
+			<label>Item 1: <input type="text" name="itm1"></label><br>
+			<label>Item 2: <input type="text" name="itm2"></label><br>
+			<label>Item 3: <input type="text" name="itm3"></label><br>
+			<label>Item 4: <input type="text" name="itm4"></label><br>
+			<label>Item 5: <input type="text" name="itm5"></label><br>
+		</div>
+		<div id="buttonsContainer">
+			<button id="clearButton">NEW BILL</button>
+			<button id="calculateButton">AMOUNT PAYABLE</button>
+		</div>
+		<div id="result"></div>
+		<script>
+			function calculateAmount() {
+				// Get the input values
+				var itm1 = parseFloat(document.getElementsByName("itm1")[0].value);
+				var itm2 = parseFloat(document.getElementsByName("itm2")[0].value);
+				var itm3 = parseFloat(document.getElementsByName("itm3")[0].value);
+				var itm4 = parseFloat(document.getElementsByName("itm4")[0].value);
+				var itm5 = parseFloat(document.getElementsByName("itm5")[0].value);
+				
+				// Calculate the total amount
+				var total = itm1 + itm2 + itm3 + itm4 + itm5;
+				
+				// Apply the discount if the total is above 1000
+				if (total >= 5000) {
+					total *= 0.8; // 20% discount
+				} else if (total >= 2000) {
+					total *= 0.9; // 10% discount
+				}
+				else if (total >= 1000) {
+			total *= 0.95; // 5% discount
+		  }
+		  
+		  // Display the result in the console and on the page
+		  console.log("AMOUNT PAYABLE: " + total);
+		  var resultDiv = document.getElementById("result");
+		  resultDiv.innerHTML = "AMOUNT PAYABLE: " + total.toFixed(2);
+		}
+		
+		// Call the calculateAmount function when the button is clicked
+		var calculateButton = document.getElementById("calculateButton");
+		calculateButton.addEventListener("click", calculateAmount);
+	  </script>
+</body>
+</html>
